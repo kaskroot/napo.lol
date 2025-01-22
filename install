@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Variables
+NGROK_DOWNLOAD_URL="https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip"
+NGROK_INSTALL_DIR="/usr/local/bin"
+NGROK_ZIP_FILE="/tmp/ngrok.zip"
+NGROK_AUTHTOKEN="2aM5moVsRxtpqDnyN9pRpiS3HAK_7Kh9msFusXx5Af4GSJGYj" # Replace this with your actual ngrok token
+NGROK_CONFIG_FILE="$HOME/.ngrok2/ngrok.yml"
+SERVICE_FILE="/etc/systemd/system/ngrok.service"
+
+# Download and install ngrok
+echo "Downloading ngrok..."
+curl -sL $NGROK_DOWNLOAD_URL -o $NGROK_ZIP_FILE
+if [ $? -ne 0 ]; then
+    echo "Failed to download ngrok. Check your internet connection."
+    exit 1
+fi
+
+echo "Installing ngrok..."
+unzip -o $NGROK_ZIP_FILE -d $NGROK_INSTALL_DIR
+chmod +x $NGROK_INSTALL_DIR/ngrok
+rm $NGROK_ZIP_FILE
+
+# Authenticate ngrok
+echo "Authenticating ngrok..."
+$NGROK_INSTALL_DIR/ngrok authtoken $NGROK_AUTHTOKEN
+if [ $? -ne 0 ]; then
+    echo "Failed to authenticate ngrok. Check your authtoken."
+    exit 1
+fi
+
+# Create ngrok configuration for TCP on port 22
+mkdir -p "$(dirname $NGROK_CONFIG_FILE)"
+cat > $NGROK_CONFIG_FILE <<EOL
+authtoken: $NGROK_AUTHTOKEN
+tunnels:
+  ssh:
+    proto: tcp
+    addr: 22
+EOL
+
+# Create systemd service for ngrok
+echo "Setting up ngrok as a service..."
+cat > $SERVICE_FILE <<EOL
+[Unit]
+Description=Ngrok SSH Tunnel Service
+After=network.target
+
+[Service]
+ExecStart=$NGROK_INSTALL_DIR/ngrok start --all --config $NGROK_CONFIG_FILE
+Restart=on-failure
+User=$USER
+
+[Install]
+WantedBy=multi-user.target
+EOL
+
+# Enable and start the ngrok service
+echo "Enabling and starting the ngrok service..."
+systemctl enable ngrok
+systemctl start ngrok
+
+# Confirm setup
+systemctl status ngrok --no-pager
+
+echo "Setup complete. Ngrok is now running and exposing port 22 (SSH) on TCP."
