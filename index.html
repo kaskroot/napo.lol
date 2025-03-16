@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Help people in Gaza and the West Bank">
   <meta name="author" content="napoleon">
@@ -12,114 +11,48 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    /*! Typebase.less v0.1.0 | MIT License */
-    /* Setup */
-    html {
-      font-family: 'JetBrains Mono', sans-serif; /* Use JetBrains Mono */
-      font-size: 137.5%;
-      -webkit-font-smoothing: antialiased;
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #222;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
     }
 
-    /* Copy & Lists */
-    p {
-      line-height: 1.5rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0;
-    }
-
-    ul, ol {
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    ul li, ol li {
-      line-height: 1.5rem;
-    }
-
-    ul ul, ol ul, ul ol, ol ol {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    blockquote {
-      line-height: 1.5rem;
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Headings */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'JetBrains Mono', sans-serif;
-      margin-top: 1.5rem;
-      margin-bottom: 0;
-      line-height: 1.5rem;
+    .container {
+      max-width: 90%;
+      width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
-      font-size: 3.5rem;
-      line-height: 4.5rem;
-      margin-top: 3rem;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
 
-    h2 {
-      font-size: 2.828rem;
-      line-height: 3rem;
-      margin-top: 3rem;
-    }
-
-    h3 {
-      font-size: 1.414rem;
-    }
-
-    h4 {
-      font-size: 0.707rem;
-    }
-
-    h5 {
-      font-size: 0.471rem;
-    }
-
-    h6 {
-      font-size: 0.353rem;
-    }
-
-    /* Tables */
-    table {
-      margin-top: 1.5rem;
-      border-spacing: 0px;
-      border-collapse: collapse;
-    }
-
-    table td, table th {
-      padding: 0;
-      line-height: 33px;
-    }
-
-    /* Code blocks */
-    code {
-      vertical-align: bottom;
-    }
-
-    /* Leading paragraph text */
-    .lead {
-      font-size: 1.414rem;
-    }
-
-    /* Hug the block above you */
-    .hug {
-      margin-top: 0;
-    }
-
-    body {
-      max-width: 1024px;
-      margin: 20px auto;
-      padding: 0 20px;
-      color: #222;
+    p {
+      font-size: 1rem;
+      margin-bottom: 10px;
     }
 
     a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
       text-decoration: underline;
-      color: #222;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -127,25 +60,27 @@
         color: #fff;
         background-color: #222;
       }
-
+      .container {
+        background: #333;
+      }
       a {
-        text-decoration: underline;
-        color: #fff;
+        color: #1E90FF;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>napo.lol</h1>
-  </header>
-  <main>
-    <section>
-      <p>you can contact me on <a href="mailto:me@napo.lol" target="_blank">me@napo.lol</a></p>
-    </section>
-  </main>
-  <footer>
-    <p>Help people in Gaza and the West Bank, You can help families caught up in catastrophic situations. <a href="https://napo.lol/donate?ref=napo.lol" target="_blank">UN CRISIS RELIEF</a></p>
-  </footer>
+  <div class="container">
+    <header>
+      <h1>napo.lol</h1>
+    </header>
+    <main>
+      <p>Contact: <a href="mailto:me@napo.lol">me@napo.lol</a></p>
+    </main>
+    <footer>
+      <p>Help people in Gaza and the West Bank. <br>
+      <a href="https://napo.lol/donate?ref=napo.lol" target="_blank">UN CRISIS RELIEF</a></p>
+    </footer>
+  </div>
 </body>
 </html>
