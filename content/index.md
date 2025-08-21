@@ -1,3 +1,3 @@
 ---
-title: Welcome to Napoleon's Blogggg
+title: Welcome to Napoleon's Blog
 ---
