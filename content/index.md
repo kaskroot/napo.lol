@@ -1,3 +1,3 @@
 ---
-title: Welcome to Napoleon's Blog
+title: Welcome to Napoleon's Blo
 ---
